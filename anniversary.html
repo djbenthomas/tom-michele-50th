@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>50th Anniversary Celebration — Tom & Michele</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111;
+      --gold: #b8860b;
+      --gold-light: #d4a534;
+      --cream: #f5f0e8;
+      --text: #e0dcd6;
+      --text-muted: #8a857e;
+      --border: #2a2a2a;
+      --green: #2d8a4e;
+      --red: #8a2d2d;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #fff; }
+    a { text-decoration: none; }
+
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(10,10,10,0.7), rgba(17,17,17,0.8)), url('images/anniversary-photo.jpg');
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(184,134,11,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero .label {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero .years {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 12vw, 8rem);
+      color: var(--gold); line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+    .hero .date {
+      font-size: 1rem; color: var(--text-muted);
+      letter-spacing: 0.15em; margin-bottom: 2rem;
+    }
+    .hero p {
+      font-size: 1.05rem; color: var(--text-muted);
+      line-height: 1.7; max-width: 550px; margin: 0 auto 2rem;
+    }
+    .btn {
+      padding: 0.85rem 2.2rem; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s;
+      display: inline-block; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--gold); color: var(--black); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .section {
+      padding: 5rem 2rem; max-width: 700px; margin: 0 auto;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 0.8rem;
+    }
+    .section h2 em { color: var(--gold); font-style: italic; }
+    .section p {
+      color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .details-card {
+      border: 1px solid var(--border); padding: 2.5rem 2rem;
+      margin-top: 2rem;
+    }
+    .details-card .item { margin-bottom: 1.5rem; }
+    .details-card .item:last-child { margin-bottom: 0; }
+    .details-card .item-label {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 0.3rem;
+    }
+    .details-card .item-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; color: #fff;
+    }
+    .details-card .item-value a { color: var(--gold); }
+    .details-card .item-value a:hover { text-decoration: underline; }
+
+    .gallery {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%; border-radius: 6px; border: 1px solid var(--border);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem; text-align: center;
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+
+    /* ========== RSVP Section ========== */
+    .rsvp-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+    }
+    .rsvp-container {
+      max-width: 600px; margin: 0 auto; text-align: center;
+    }
+    .rsvp-container h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 0.5rem;
+    }
+    .rsvp-container h2 em { color: var(--gold); font-style: italic; }
+    .rsvp-container > p {
+      color: var(--text-muted); margin-bottom: 2rem;
+    }
+
+    .rsvp-card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .rsvp-card iframe {
+      border-radius: 6px;
+    }
+
+    /* ========== Lightbox ========== */
+    .lightbox-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.92); z-index: 999; cursor: pointer;
+      align-items: center; justify-content: center;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 90vw; max-height: 90vh; border-radius: 8px;
+      border: 2px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+    .gallery img { cursor: pointer; transition: opacity 0.3s; }
+    .gallery img:hover { opacity: 0.85; }
+
+    .inline-link { color: var(--gold); text-decoration: underline; }
+    .inline-link:hover { color: var(--gold-light); }
+
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Tom &amp; Michele's<br><em>50th Anniversary</em></h1>
+    <div class="label">Party</div>
+    <div class="date">June 13, 2026 · Omaha, NE</div>
+    <p>Join us for an evening of barbecue, refreshments, and celebrating 50 years of Tom &amp; Michele!</p>
+    <a href="#details" class="btn btn-primary">Celebrate With Us →</a>
+  </div>
+</section>
+
+<!-- ====== DETAILS ====== -->
+<section class="section" id="details">
+  <h2>Come <em>celebrate</em> with us</h2>
+  <p>Family, friends, food, and memories — we're throwing a party for the couple who taught us what love really means. Let's fill the room with the same warmth they've given us all these years.</p>
+
+  <div class="details-card">
+    <div class="item">
+      <div class="item-label">Date</div>
+      <div class="item-value">Saturday, June 13, 2026 — 4:00 PM</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Schedule</div>
+      <div class="item-value">4:00 PM — Refreshments &amp; mingling<br>5:00 PM — Catered barbecue dinner</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Location</div>
+      <div class="item-value">
+        3421 S 112th St<br>
+        Omaha, NE 68144
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <a href="#rsvp" class="btn btn-primary">RSVP Now →</a>
+  </div>
+</section>
+
+<!-- ====== STORY ====== -->
+<section class="section">
+  <h2>Their <em>story</em></h2>
+  <p style="text-align:left; max-width:600px; margin:0 auto;">
+    Tom proposed on the sofa in her parents' living room — just watching TV. Her mom was in the kitchen, her dad was already in bed. When she said yes, her dad came stumbling out asking what all the noise was about.
+  </p>
+  <p style="text-align:left; max-width:600px; margin:1rem auto 0;">
+    What brought them together? <strong>Cars and motorcycles.</strong> Tom was a mechanic. Michele loved riding on the back of his bike — until she bought her own dirt bike and street bike so she could ride alongside him.
+  </p>
+  <p style="text-align:left; max-width:600px; margin:1rem auto 0;">
+    They started in a basement apartment at his parents' house. Not perfect, but cozy. Baby Andrea arrived, then Ben nine months later. They bought their first house on 41st &amp; Drexel with Tom working as an electrician. Years of hard work, family holidays, Sunday dinners, and playing guitars together in a band for 10 years.
+  </p>
+  <p style="text-align:left; max-width:600px; margin:1rem auto 0;">
+    About 40 years later, the kids were grown and they bought their home on 112th St. Every day they count their blessings. They cook together, garden together, and still finish each other's sentences.
+  </p>
+  <p style="text-align:center; margin-top:1.5rem; font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--gold);">
+    "We get along good. We do things together.<br>We have the same likes and dislikes."<br>
+    <span style="font-size:0.9rem; font-family:'Inter',sans-serif;">— Michele</span>
+  </p>
+</section>
+
+<!-- ====== RSVP FORM ====== -->
+<section class="rsvp-section" id="rsvp">
+  <div class="rsvp-container">
+    <h2>Will you be <em>joining us?</em></h2>
+    <p>Let us know by <strong>May 30</strong> so we can get a final headcount for the barbecue.</p>
+
+    <div class="rsvp-card" style="padding: 1.5rem; overflow: hidden;">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVgByyT-Er5-Ogeh_AS9F1RXSdGZ-PmwVrXagDvWFMClY4KQ/viewform?embedded=true" 
+              width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0"
+              style="background: transparent; border-radius: 6px;">
+        Loading…
+      </iframe>
+    </div>
+    <p style="color:var(--text-muted); font-size:0.8rem; margin-top:1rem;">
+      Responses go straight to a Google Sheet — Michele can see the guest list anytime.
+    </p>
+  </div>
+</section>
+
+<!-- ====== GALLERY ====== -->
+<section class="section">
+  <h2>A lifetime of <em>memories</em></h2>
+  <p>Five decades of marriage. A family built on love, faith, and countless unforgettable moments.</p>
+  <div class="gallery" style="grid-template-columns: 1fr 1fr 1fr;">
+    <img src="images/anniversary-photo.jpg" alt="Tom & Michele">
+    <img src="images/tom-michele.jpg" alt="Tom & Michele">
+    <img src="images/tom-michele-2.jpg" alt="Tom & Michele">
+    <img src="images/tom-michele-3.jpg" alt="Tom & Michele">
+    <img src="images/tom-michele-4.jpg" alt="Tom & Michele">
+    <img src="images/tom-michele-5.jpg" alt="Tom & Michele">
+    <img src="images/tom-michele-6.jpg" alt="Tom & Michele">
+  </div>
+</section>
+
+<!-- ====== CANT MAKE IT ====== -->
+<section class="section">
+  <h2>Can't make it?</h2>
+  <p>If you can't join in person, send a message or memory through the <a href="#rsvp" class="inline-link">RSVP form above</a> — every word means the world to them.</p>
+  <p style="color:var(--text-muted); font-size:0.85rem;">Or text Michele directly at <strong>(402) 305-2304</strong></p>
+</section>
+
+<!-- ====== LIGHTBOX ====== -->
+<div class="lightbox-overlay" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="Enlarged photo">
+</div>
+
+<footer>
+  © 2026 — Tom &amp; Michele's 50th Anniversary · Omaha, NE
+</footer>
+
+<script>
+  // ========== Lightbox ==========
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', function() {
+      document.getElementById('lightbox-img').src = this.src;
+      document.getElementById('lightbox').classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

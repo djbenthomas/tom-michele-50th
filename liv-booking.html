@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Book Liv N the Dream — Live Band</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e0dcd6;
+      min-height: 100vh;
+      padding: 12px;
+    }
+    .card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    @media (min-width: 500px) {
+      body { padding: 20px; }
+      .card { padding: 32px; }
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .subtitle { color: #8a857e; font-size: 0.85rem; margin-bottom: 12px; }
+    .badge { color: #c9a84c; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
+    .day-badge {
+      background: #1a2a1a;
+      color: #4ade80;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #2a4a2a;
+      display: none;
+    }
+    .day-badge.show { display: block; }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      color: #8a857e;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: #c9a84c; }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a857e' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+
+    .form-group { margin-bottom: 14px; }
+
+    .grahams-box {
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }
+    .grahams-box label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      margin: 0;
+      color: #e0dcd6;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    .grahams-box input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      -webkit-appearance: auto;
+      appearance: auto;
+    }
+    .grahams-box strong { color: #c9a84c; }
+    .grahams-box .small { color: #8a857e; font-size: 0.8rem; margin-top: 2px; }
+
+    .addon-group { margin-bottom: 14px; }
+    .addon-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .addon-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin: 0;
+      -webkit-appearance: auto;
+      appearance: auto;
+    }
+    .free-tag {
+      display: inline-block;
+      background: #1a3a1a;
+      color: #4ade80;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 4px;
+      font-weight: 600;
+    }
+    .photo-booth-banner {
+      background: #1a2a3a;
+      border: 1px solid #2a4a6a;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.85rem;
+      color: #c9a84c;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .total-box {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+    .total-box .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 0;
+    }
+    .total-box .label { color: #8a857e; font-size: 0.85rem; }
+    .total-box .value { color: #fff; font-weight: 600; }
+    .total-box .total-row .value { color: #c9a84c; font-size: 1.3rem; font-weight: 700; }
+    .total-box .divider { border-top: 1px solid #2a2a2a; margin: 8px 0; }
+    .total-box .disclaimer { color: #666; font-size: 0.75rem; margin-top: 6px; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #c9a84c;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:active { background: #dbb856; }
+
+    .footer-note { text-align: center; font-size: 0.75rem; color: #666; margin-top: 14px; }
+    .footer-note strong { color: #8a857e; }
+
+    .savings { color: #4ade80; font-size: 0.8rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎸 Book Liv N the Dream</h1>
+    <p class="subtitle">Live Band • Nashville, TN</p>
+    <p class="badge">Secure your date with a 25% deposit</p>
+    <div id="dayDiscount" class="day-badge"></div>
+
+    <form id="bookingForm" action="https://formsubmit.co/bennythomasband@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Liv N the Dream Booking Request">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="day-of-week" id="dayOfWeek">
+      <input type="hidden" name="discount-applied" id="discountApplied">
+      <input type="hidden" name="total-before-discount" id="totalBeforeDiscount">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input required type="text" name="name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input required type="email" name="email">
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input required type="tel" name="phone">
+      </div>
+
+      <div class="form-group">
+        <label>Event Location (City / Venue)</label>
+        <input required type="text" name="location">
+      </div>
+
+      <div class="form-group">
+        <label>Event Date</label>
+        <input required type="date" name="date" id="eventDate" onchange="updatePricing()">
+        <p style="color:#666;font-size:0.75rem;margin-top:4px;" id="dayHint"></p>
+      </div>
+
+      <div class="form-group">
+        <label>Event Type</label>
+        <select name="type">
+          <option>Wedding</option>
+          <option>Corporate Event</option>
+          <option>Private Party</option>
+          <option>Festival</option>
+          <option>Bar / Club</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Package</label>
+        <select name="package" id="packageSelect" onchange="updatePricing()">
+          <option value="2500">Standard — 4 Hours ($2,500)</option>
+          <option value="3500">Premium — 5 Hours w/ Liv Joy ($3,500)</option>
+          <option value="4200">Ceremony + Reception ($4,200)</option>
+        </select>
+      </div>
+
+      <div class="grahams-box">
+        <label>
+          <input type="checkbox" name="grahams" id="grahamsCheck" value="yes" onchange="updatePricing()">
+          <div>
+            <strong>🏛️ Booking at Grahams Estate?</strong>
+            <div class="small">Get <strong style="color:#4ade80;">$1,000 off</strong> when you book at Grahams Estate in Gallatin, TN!</div>
+          </div>
+        </label>
+      </div>
+
+      <div class="addon-group">
+        <label>Add-Ons</label>
+        <div class="addon-item">
+          <input type="checkbox" name="addons" value="Ceremony Audio" data-price="0" onchange="updatePricing()">
+          Ceremony Audio <span class="free-tag">FREE</span>
+        </div>
+        <div class="addon-item">
+          <input type="checkbox" name="addons" value="Cocktail Hour Acoustic" data-price="0" onchange="updatePricing()">
+          Cocktail Hour Acoustic Set <span class="free-tag">FREE w/ Premium</span>
+        </div>
+        <div class="addon-item">
+          <input type="checkbox" name="addons" value="Extra Hour" data-price="200" onchange="updatePricing()">
+          Extra Hour — $200
+        </div>
+        <div class="addon-item">
+          <input type="checkbox" name="addons" value="Lighting Package" data-price="250" onchange="updatePricing()">
+          Lighting Package — $250
+        </div>
+        <div class="addon-item">
+          <input type="checkbox" name="addons" value="MC Services" data-price="150" onchange="updatePricing()">
+          MC / Emcee Services — $150
+        </div>
+        <div class="addon-item">
+          <input type="checkbox" name="addons" value="DJ Services" data-price="500" onchange="updatePricing()">
+          DJ + Band Combo — $500
+        </div>
+        <div class="photo-booth-banner">
+          🎁 <strong>FREE Photo Booth</strong> included with any band booking! ($300 value)
+        </div>
+      </div>
+
+      <div class="total-box">
+        <p style="color:#666;font-size:0.75rem;margin-bottom:6px;">Travel fee: $50 if over 40 miles from Hendersonville</p>
+        <div class="row" id="discountDisplay" style="display:none;"></div>
+        <div class="divider"></div>
+        <div class="row total-row">
+          <span class="label" style="font-size:1rem;">Total</span>
+          <span class="value" id="totalPrice">$2,500</span>
+        </div>
+        <div class="row" style="margin-top:4px;">
+          <span class="label">Deposit (25%)</span>
+          <span class="value" id="depositAmount">$625</span>
+        </div>
+        <div class="row" id="savingsRow"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Message (optional)</label>
+        <textarea name="message" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">📩 Send Booking Request</button>
+    </form>
+
+    <p class="footer-note">Questions? Call or text <strong>(661) 533-0100</strong></p>
+  </div>
+
+  <script>
+    const discounts = { 0: 0.20, 1: 0.20, 2: 0.20, 3: 0.20, 4: 0.20, 5: 0.10, 6: 0 };
+    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const grahamsDiscount = 1000;
+
+    function updatePricing() {
+      const dateInput = document.getElementById('eventDate');
+      const pkg = document.getElementById('packageSelect');
+      const totalSpan = document.getElementById('totalPrice');
+      const depositSpan = document.getElementById('depositAmount');
+      const dayHint = document.getElementById('dayHint');
+      const dayBadge = document.getElementById('dayDiscount');
+      const discDisp = document.getElementById('discountDisplay');
+      const savingsRow = document.getElementById('savingsRow');
+
+      const basePrice = parseInt(pkg.value);
+      let addonTotal = 0;
+      document.querySelectorAll('input[name="addons"]:checked').forEach(cb => {
+        addonTotal += parseInt(cb.dataset.price) || 0;
+      });
+
+      if (dateInput.value) {
+        const date = new Date(dateInput.value + 'T12:00:00');
+        const day = date.getDay();
+        const dayName = dayNames[day === 0 ? 6 : day - 1];
+        const disc = discounts[day] || 0;
+
+        document.getElementById('dayOfWeek').value = dayName;
+        dayHint.textContent = dayName;
+
+        dayBadge.classList.add('show');
+        let badgeText = '📅 ' + dayName;
+        if (day === 6) badgeText += ' — Standard pricing';
+        else if (day === 5) badgeText += ' — 10% OFF 🎉';
+        else badgeText += ' — ' + Math.round(disc * 100) + '% OFF 🔥';
+        dayBadge.textContent = badgeText;
+
+        let before = basePrice + addonTotal;
+        let afterDay = Math.round(before * (1 - disc));
+        let grahamsActive = document.getElementById('grahamsCheck').checked;
+        let discText = '';
+        
+        if (day === 6) discText = 'Saturday — full rate';
+        else if (day === 5) discText = 'Friday — 10% off!';
+        else discText = dayName + ' — ' + Math.round(disc * 100) + '% off';
+        
+        if (grahamsActive) {
+          afterDay = afterDay - grahamsDiscount;
+          discText += ' + $1,000 Grahams discount!';
+        }
+        if (afterDay < 0) afterDay = 0;
+        
+        let total = afterDay;
+        let deposit = Math.round(total * 0.25);
+
+        document.getElementById('discountApplied').value = discText;
+        document.getElementById('totalBeforeDiscount').value = '$' + before;
+
+        totalSpan.textContent = '$' + total.toLocaleString();
+        depositSpan.textContent = '$' + deposit.toLocaleString();
+        
+        let savings = Math.round(before - total);
+        if (savings > 0) {
+          discDisp.style.display = 'flex';
+          discDisp.innerHTML = '<span class="label">You save</span><span class="savings">$' + savings.toLocaleString() + '</span>';
+        } else {
+          discDisp.style.display = 'none';
+        }
+        
+        if (grahamsActive) {
+          savingsRow.innerHTML = '<span class="label">Grahams discount</span><span class="savings">-$1,000</span>';
+        } else {
+          savingsRow.innerHTML = '';
+        }
+        
+      } else {
+        dayBadge.classList.remove('show');
+        dayHint.textContent = 'Pick a date to see pricing';
+        
+        let grahamsActive = document.getElementById('grahamsCheck').checked;
+        let total = basePrice + addonTotal;
+        if (grahamsActive) {
+          total = total - grahamsDiscount;
+          savingsRow.innerHTML = '<span class="label">Grahams discount</span><span class="savings">-$1,000</span>';
+        } else {
+          savingsRow.innerHTML = '';
+        }
+        if (total < 0) total = 0;
+        let deposit = Math.round(total * 0.25);
+        totalSpan.textContent = '$' + total.toLocaleString();
+        depositSpan.textContent = '$' + deposit.toLocaleString();
+        discDisp.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

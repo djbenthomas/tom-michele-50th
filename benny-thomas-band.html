@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benny Thomas Band — Live Music | Nashville, TN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111;
+      --gold: #c9a84c;
+      --gold-light: #dbb856;
+      --text: #e0dcd6;
+      --text-muted: #8a857e;
+      --border: #2a2a2a;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #fff; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* Nav */
+    .nav {
+      background: var(--black); padding: 15px 0; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .nav a {
+      color: var(--text-muted); text-decoration: none; margin-left: 25px;
+      font-size: 0.9rem; transition: 0.3s;
+    }
+    .nav a:hover, .nav .active { color: var(--gold); }
+    .nav .logo { color: #fff; font-weight: bold; font-size: 1.1rem; }
+    @media (max-width: 600px) {
+      .nav .container { flex-direction: column; gap: 10px; }
+      .nav a { margin: 0 10px; }
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 85vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f3460 100%);
+      display: flex; align-items: center; text-align: center;
+      border-bottom: 2px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://github.com/djbenthomas/as-ulikeit/raw/main/images/benny-guitar-1.png') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero h1 { font-size: 4rem; letter-spacing: 3px; margin-bottom: 10px; }
+    .hero .subtitle { font-size: 1.3rem; color: var(--gold); letter-spacing: 6px; text-transform: uppercase; }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 20px auto; }
+    .hero .btn-row { margin-top: 30px; }
+    .btn {
+      display: inline-block; padding: 14px 36px; background: var(--gold); color: var(--black);
+      text-decoration: none; border-radius: 5px; font-weight: 600; margin: 8px; transition: 0.3s;
+    }
+    .btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+    .btn-outline:hover { background: var(--gold); color: var(--black); }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero { min-height: auto; padding: 100px 0 60px; }
+    }
+
+    /* Section styles */
+    section { padding: 70px 0; }
+    .section-label {
+      font-size: 0.85rem; color: var(--gold); letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 2.5rem; margin-bottom: 20px;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 1.05rem; margin-bottom: 40px;
+      max-width: 650px;
+    }
+    .text-center { text-align: center; }
+    .center-margin { margin-left: auto; margin-right: auto; }
+
+    /* About */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+    }
+    .about-grid img {
+      width: 100%; border-radius: 10px; border: 1px solid var(--border);
+    }
+    .about-text p { margin-bottom: 15px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; }
+    .about-text .endorsements {
+      display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;
+    }
+    .about-text .endorsements span {
+      background: var(--dark); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 5px; font-size: 0.85rem; color: var(--gold);
+    }
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Set list / vibe */
+    .vibe-section { background: var(--dark); }
+    .vibe-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px;
+    }
+    .vibe-card {
+      background: #1a1a1a; border: 1px solid var(--border); border-radius: 10px;
+      padding: 30px; text-align: center; transition: 0.3s;
+    }
+    .vibe-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .vibe-card .icon { font-size: 2.5rem; margin-bottom: 15px; }
+    .vibe-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--gold); }
+    .vibe-card p { color: var(--text-muted); font-size: 0.95rem; }
+    @media (max-width: 700px) { .vibe-grid { grid-template-columns: 1fr; } }
+
+    /* Originals */
+    .song-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .song-item {
+      background: #1a1a1a; border: 1px solid var(--border); border-radius: 10px;
+      padding: 20px; transition: 0.3s;
+    }
+    .song-item:hover { border-color: var(--gold); }
+    .song-item h3 { font-size: 1.2rem; margin-bottom: 5px; }
+    .song-item .vibe-tag { color: var(--gold); font-size: 0.85rem; }
+    .song-item p { color: #999; font-size: 0.9rem; margin-top: 8px; }
+    @media (max-width: 600px) { .song-list { grid-template-columns: 1fr; } }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .gallery-grid img {
+      width: 100%; border-radius: 10px; border: 1px solid var(--border);
+    }
+    @media (max-width: 600px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    /* Booking */
+    .booking { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); }
+    .booking-info {
+      max-width: 600px; margin: 0 auto; text-align: center;
+    }
+    .booking-info .detail { color: var(--text-muted); margin-bottom: 8px; }
+    .booking-info .detail strong { color: var(--gold); }
+
+    /* Social */
+    .social-section { text-align: center; background: #0f0f0f; border-top: 1px solid var(--border); }
+    .social-links {
+      display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px;
+    }
+    .social-links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 25px; background: var(--dark); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); text-decoration: none; transition: 0.3s;
+    }
+    .social-links a:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    footer {
+      text-align: center; padding: 30px; color: #555;
+      font-size: 0.85rem; border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <span class="logo">🎸 Benny Thomas Band</span>
+    <div>
+      <a href="/as-ulikeit/">Home</a>
+      <a href="/as-ulikeit/liv-n-the-dream.html">Liv N the Dream</a>
+      <a href="/as-ulikeit/benny-thomas-band.html" class="active">Benny Thomas Band</a>
+      <a href="/as-ulikeit/songwriter.html">Songwriter</a>
+      <a href="/as-ulikeit/photo-booth.html">Photo Booth</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <p class="subtitle">Live Band — Nashville, TN</p>
+    <h1>Benny Thomas Band</h1>
+    <p>High-energy country, rock, hip-hop, and originals — fronted by one of Nashville's most versatile performers. Every show is a one-of-a-kind experience.</p>
+    <div class="btn-row">
+      <a href="#booking" class="btn">Book the Band</a>
+      <a href="#originals" class="btn btn-outline">Original Songs</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <p class="section-label text-center">About</p>
+    <h2 class="section-title text-center">From Nebraska to Nashville</h2>
+    <div class="about-grid">
+      <img src="https://github.com/djbenthomas/as-ulikeit/raw/main/images/benny-guitar-1.png" alt="Benny Thomas">
+      <div class="about-text">
+        <p>Benny Thomas is a Nashville-based singer, songwriter, and entertainer whose journey spans 15 years and 900+ events across the country. From Omaha to Los Angeles, Las Vegas, and now Nashville — every mile shows up in the music.</p>
+        <p>In Las Vegas, he hosted a hit game show and earned a reputation as the <strong>world's fastest bass slapper</strong>. Today, he channels that same energy into blistering guitar work, freestyle rap, and a live show that's famously unpredictable.</p>
+        <p>Benny invented <strong>"train beat metal"</strong> — a signature style that takes popular songs and "countrifies" them, transforming chart-toppers into gritty, high-energy country anthems. His live performances are interactive, often improvising lyrics on the fly and bringing audience members into the moment.</p>
+        <p>Whether it's a wedding, corporate event, private party, or club show — the Benny Thomas Band delivers a night nobody forgets.</p>
+        <div class="endorsements">
+          <span>🔊 Spector Bass</span>
+          <span>🎸 Palmer Guitars</span>
+          <span>📢 Marshall</span>
+          <span>⚡ Eden Amplifiers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vibe / Experience -->
+<section class="vibe-section">
+  <div class="container">
+    <p class="section-label text-center">The Experience</p>
+    <h2 class="section-title text-center">What to Expect</h2>
+    <div class="vibe-grid">
+      <div class="vibe-card">
+        <div class="icon">🎤</div>
+        <h3>Freestyle & Improv</h3>
+        <p>Songs written on the fly about audience members. Birthday, anniversary, or just the character in the crowd — we make it happen.</p>
+      </div>
+      <div class="vibe-card">
+        <div class="icon">🎸</div>
+        <h3>Any Request</h3>
+        <p>Request any song — even if we've never played it. If we don't know it, we'll learn it on the spot. Country, rock, hip-hop, anything.</p>
+      </div>
+      <div class="vibe-card">
+        <div class="icon">🔥</div>
+        <h3>Maximum Energy</h3>
+        <p>Heartfelt ballads to rapid-fire rap to hard-hitting instrumental breaks. A sonic rollercoaster from start to finish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Originals -->
+<section id="originals">
+  <div class="container">
+    <p class="section-label text-center">Originals</p>
+    <h2 class="section-title text-center">Original Songs</h2>
+    <p class="section-sub text-center center-margin">Benny writes and performs original music that blends traditional country storytelling with modern production and a rock edge.</p>
+    <div class="song-list">
+      <div class="song-item">
+        <h3>"Hey Summer"</h3>
+        <div class="vibe-tag">Country-Pop / Summer Anthem</div>
+        <p>Feel-good summer anthem. Bright, infectious energy perfect for radio and beer commercial sync.</p>
+      </div>
+      <div class="song-item">
+        <h3>"Teach Me To Dance"</h3>
+        <div class="vibe-tag">Country Ballad</div>
+        <p>Heartfelt love song with a key change that brings the house down. Built for weddings and first dances.</p>
+      </div>
+      <div class="song-item">
+        <h3>"Sounds Like a Country Song"</h3>
+        <div class="vibe-tag">Country Story-Song</div>
+        <p>Classic country storytelling. Rich imagery, laid-back groove, a chorus that feels timeless.</p>
+      </div>
+      <div class="song-item">
+        <h3>"Daddy's at the Bar"</h3>
+        <div class="vibe-tag">Emotional Country Ballad</div>
+        <p>Raw, honest song about fatherhood, loss, and late nights. Deeply personal and powerful.</p>
+      </div>
+      <div class="song-item">
+        <h3>"What Rednecks Do"</h3>
+        <div class="vibe-tag">Up-Tempo Party Anthem</div>
+        <p>Unapologetic celebration of redneck culture. Mix of humor and heart — perfect for any crowd.</p>
+      </div>
+      <div class="song-item" style="border: 1px dashed #444; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div>
+          <p style="color: var(--gold); font-size: 1.2rem; font-weight: bold;">More Coming Soon</p>
+          <p style="color: #666;">New originals in the works</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top: 30px;">
+      <a href="/as-ulikeit/songwriter.html" class="btn btn-outline">View Songwriter Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section style="background: var(--dark);">
+  <div class="container">
+    <p class="section-label text-center">Gallery</p>
+    <h2 class="section-title text-center">Live & In the Studio</h2>
+    <div class="gallery-grid">
+      <img src="https://github.com/djbenthomas/as-ulikeit/raw/main/images/benny-guitar-2.jpg" alt="Benny Thomas - Guitar Performance">
+      <img src="https://github.com/djbenthomas/as-ulikeit/raw/main/images/benny-stage.jpg" alt="Benny Thomas - On Stage">
+      <img src="https://github.com/djbenthomas/as-ulikeit/raw/main/images/benny-promo.jpg" alt="Benny Thomas - Promo Shot">
+      <img src="https://github.com/djbenthomas/as-ulikeit/raw/main/images/benny-square.png" alt="Benny Thomas - Portrait">
+    </div>
+    <p class="text-center" style="margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">More photos coming soon</p>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="booking">
+  <div class="container">
+    <p class="section-label text-center">Book Now</p>
+    <h2 class="section-title text-center">Want the Benny Thomas Band at your event?</h2>
+    <div class="booking-info">
+      <p class="detail">📧 <strong>bennythomasband@gmail.com</strong></p>
+      <p class="detail">📞 <strong>(661) 533-0100</strong></p>
+      <p class="detail" style="margin-top: 20px;">Available for weddings, corporate events, private parties, clubs, and festivals.</p>
+      <p class="detail">Call, text, or email — let's make your event unforgettable.</p>
+      <div style="margin-top: 30px;">
+        <a href="sms:6615330100" class="btn">📱 Text to Book</a>
+        <a href="https://djbenthomas.github.io/Booking/" class="btn btn-outline">Online Booking</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social -->
+<section class="social-section">
+  <div class="container">
+    <p class="section-label">Connect</p>
+    <h2 class="section-title" style="font-size:1.8rem;">Follow Benny Thomas Band</h2>
+    <div class="social-links">
+      <a href="https://www.instagram.com/bennythomasband/" target="_blank">📸 Instagram</a>
+      <a href="https://youtube.com/@bennythomasband695" target="_blank">▶ YouTube</a>
+      <a href="https://www.facebook.com/ASULIKEITENTERTAINMENT" target="_blank">📘 Facebook</a>
+      <a href="https://www.tiktok.com/@bennythomascountryband" target="_blank">🎵 TikTok</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Benny Thomas Band — Nashville, TN</p>
+  <p style="margin-top: 5px; color: #444;">Part of AS·U·LIKE·IT Entertainment</p>
+</footer>
+
+</body>
+</html>

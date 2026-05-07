@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny Thomas — Songwriter | Nashville, TN</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            border-bottom: 2px solid #c9a84c;
+        }
+        .hero h1 { font-size: 3rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+        .hero .title { font-size: 1.2rem; color: #c9a84c; letter-spacing: 4px; text-transform: uppercase; }
+        .hero .tagline { font-size: 1.1rem; color: #999; margin-top: 15px; font-style: italic; }
+
+        .bio-section { padding: 60px 0; background: #111; }
+        .bio-section .container { display: flex; gap: 40px; align-items: flex-start; }
+        .bio-photo { width: 300px; border-radius: 10px; border: 2px solid #333; flex-shrink: 0; }
+        .bio-text h2 { color: #c9a84c; font-size: 1.8rem; margin-bottom: 15px; }
+        .bio-text p { margin-bottom: 15px; color: #bbb; font-size: 1.05rem; }
+        @media (max-width: 700px) {
+            .bio-section .container { flex-direction: column; align-items: center; }
+            .bio-photo { width: 200px; }
+        }
+
+        .featured {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            text-align: center;
+        }
+        .featured h2 { color: #c9a84c; font-size: 2rem; margin-bottom: 10px; }
+        .featured .song-title { font-size: 2.5rem; color: #fff; margin: 15px 0; }
+        .featured .stats { display: flex; justify-content: center; gap: 40px; margin: 25px 0; flex-wrap: wrap; }
+        .featured .stat-item { text-align: center; }
+        .featured .stat-item .value { font-size: 1.5rem; color: #c9a84c; font-weight: bold; }
+        .featured .stat-item .label { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .featured .description { color: #bbb; max-width: 600px; margin: 20px auto; font-size: 1.05rem; }
+        .btn {
+            display: inline-block; padding: 12px 30px; background: #c9a84c; color: #0a0a0a;
+            text-decoration: none; border-radius: 5px; font-weight: bold; margin: 10px; transition: 0.3s;
+        }
+        .btn:hover { background: #dbb856; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid #c9a84c; color: #c9a84c; }
+        .btn-outline:hover { background: #c9a84c; color: #0a0a0a; }
+
+        .catalog { padding: 60px 0; background: #111; }
+        .catalog h2 { color: #c9a84c; font-size: 2rem; text-align: center; margin-bottom: 40px; }
+        .song-card {
+            background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px;
+            padding: 25px; margin-bottom: 20px; transition: 0.3s;
+        }
+        .song-card:hover { border-color: #c9a84c; }
+        .song-card h3 { color: #fff; font-size: 1.4rem; margin-bottom: 10px; }
+        .song-card .meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+        .song-card .meta span { font-size: 0.9rem; color: #c9a84c; }
+        .song-card p { color: #999; font-size: 0.95rem; }
+
+        .contact { padding: 60px 0; background: #0a0a0a; text-align: center; border-top: 1px solid #222; }
+        .contact h2 { color: #c9a84c; font-size: 2rem; margin-bottom: 15px; }
+        .contact p { color: #999; margin-bottom: 5px; }
+        .contact .email { color: #c9a84c; font-size: 1.2rem; }
+
+        .social-row { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
+        .social-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; background: #1a1a1a; border: 1px solid #333;
+            border-radius: 8px; color: #ddd; text-decoration: none; transition: 0.3s;
+        }
+        .social-link:hover { border-color: #c9a84c; color: #c9a84c; }
+
+        .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 40px 0; }
+        .photo-grid img { width: 100%; border-radius: 10px; border: 1px solid #333; }
+        @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr; } }
+
+        .nav {
+            background: #0a0a0a; padding: 15px 0; border-bottom: 1px solid #222;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav a { color: #888; text-decoration: none; margin-left: 25px; font-size: 0.9rem; transition: 0.3s; }
+        .nav a:hover, .nav a.active { color: #c9a84c; }
+        .nav .logo { color: #fff; font-weight: bold; font-size: 1.1rem; }
+        @media (max-width: 500px) {
+            .hero h1 { font-size: 2rem; }
+            .nav .container { flex-direction: column; gap: 10px; }
+            .nav a { margin: 0 10px; }
+        }
+
+        footer { background: #0a0a0a; text-align: center; padding: 30px; color: #555; font-size: 0.85rem; border-top: 1px solid #1a1a1a; }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container">
+        <span class="logo">🎸 Benny Thomas</span>
+        <div>
+            <a href="/as-ulikeit/">Home</a>
+            <a href="/as-ulikeit/liv-n-the-dream.html">Band</a>
+            <a href="/as-ulikeit/songwriter.html" class="active">Songwriter</a>
+            <a href="/as-ulikeit/benny-thomas-band.html">Benny Thomas Band</a>
+            <a href="/as-ulikeit/photo-booth.html">Photo Booth</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <p class="title">Songwriter</p>
+        <h1>Benny Thomas</h1>
+        <p class="tagline">Nashville's most versatile original songwriter — country, country-pop, and everything in between</p>
+    </div>
+</section>
+
+<!-- Bio -->
+<section class="bio-section">
+    <div class="container">
+        <img src="/as-ulikeit/images/benny-guitar-1.png" alt="Benny Thomas" class="bio-photo">
+        <div class="bio-text">
+            <h2>About the Writer</h2>
+            <p>Benny Thomas brings 15 years of live performance, 900+ events, and a lifetime of stories to every song he writes. From Omaha to Los Angeles to Las Vegas to Nashville — his journey through America's entertainment capitals gives his songwriting an authentic, hard-earned voice.</p>
+            <p>His catalog spans heartfelt country ballads, high-energy anthems, and genre-bending originals that blend traditional country storytelling with modern production. Whether it's a summer anthem ready for radio or a tender love song built for a first dance, Benny writes songs that stick.</p>
+            <p>Endorsed by Spector Bass, Palmer Guitars, Marshall, and Eden Amplifiers. Frontman of <strong>Friends with Bennys</strong>, Nashville's most unpredictable live band.</p>
+            <p style="margin-top: 20px; color: #c9a84c; font-style: italic;">"He writes what he lives — and you can hear every mile of the road in every line."<br>— Dale Jacobs, Promotion Manager</p>
+            <div class="social-row" style="justify-content: flex-start; margin-top: 20px;">
+                <a href="https://www.instagram.com/bennythomasband/" target="_blank" class="social-link">📸 Instagram</a>
+                <a href="https://youtube.com/@bennythomasband695" target="_blank" class="social-link">▶ YouTube</a>
+                <a href="https://www.facebook.com/ASULIKEITENTERTAINMENT" target="_blank" class="social-link">📘 Facebook</a>
+                <a href="https://www.tiktok.com/@bennythomascountryband" target="_blank" class="social-link">🎵 TikTok</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured: Hey Summer -->
+<section class="featured">
+    <div class="container">
+        <h2>🔥 Featured Song</h2>
+        <div class="song-title">"Hey Summer"</div>
+        <div class="stats">
+            <div class="stat-item"><div class="value">E Major</div><div class="label">Key</div></div>
+            <div class="stat-item"><div class="value">89 BPM</div><div class="label">Tempo</div></div>
+            <div class="stat-item"><div class="value">Country-Pop</div><div class="label">Genre</div></div>
+            <div class="stat-item"><div class="value">1:00</div><div class="label">Promo</div></div>
+        </div>
+        <p class="description">A feel-good summer anthem built for cold beer, sunshine, and open roads. Bright, infectious, and ready for radio — this is the song for every playlist titled "Summer Vibes."</p>
+        <a href="https://github.com/djbenthomas/as-ulikeit/raw/main/hey_summer.mp3" class="btn" target="_blank">▶ Listen to Demo</a>
+        <a href="https://github.com/djbenthomas/as-ulikeit/raw/main/hey-summer-promo.mp4" class="btn btn-outline" target="_blank">▶ Watch Promo Video</a>
+        <p style="color: #888; font-size: 0.85rem; margin-top: 20px;">Available for artist cut or sync licensing. Full song available upon request.</p>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section style="padding: 40px 0; background: #0f0f0f;">
+    <div class="container">
+        <h2 style="color: #c9a84c; font-size: 1.8rem; text-align: center; margin-bottom: 10px;">📸 In the Studio</h2>
+        <div class="photo-grid">
+            <img src="/as-ulikeit/images/benny-guitar-2.jpg" alt="Benny Thomas - Guitar Performance">
+            <img src="/as-ulikeit/images/benny-stage.jpg" alt="Benny Thomas - On Stage">
+            <img src="/as-ulikeit/images/benny-promo.jpg" alt="Benny Thomas - Promo Shot">
+            <img src="/as-ulikeit/images/benny-square.png" alt="Benny Thomas - Portrait">
+        </div>
+    </div>
+</section>
+
+<!-- Catalog -->
+<section class="catalog">
+    <div class="container">
+        <h2>Song Catalog</h2>
+
+        <div class="song-card">
+            <h3>"Hey Summer"</h3>
+            <div class="meta">
+                <span>🎵 E Major | 89 BPM</span>
+                <span>🏷️ Country-Pop / Summer Anthem</span>
+                <span>⏱️ 1:00 (Full version available)</span>
+            </div>
+            <p>Bright, feel-good summer anthem. Perfect for radio, playlist placement, or beer commercial sync. Windows-down, sunshine-on-your-face energy.</p>
+        </div>
+
+        <div class="song-card">
+            <h3>"Teach Me To Dance"</h3>
+            <div class="meta">
+                <span>🎵 D Major → E Major | ~126 BPM</span>
+                <span>🏷️ Country / Slow-Build Ballad</span>
+                <span>⏱️ Full band chart available</span>
+            </div>
+            <p>A heartfelt love song with a key change that lifts the roof off. Tailor-made for weddings, first dances, or that moment in a set where you want everyone's phone in the air.</p>
+        </div>
+
+        <div class="song-card">
+            <h3>"Sounds Like a Country Song"</h3>
+            <div class="meta">
+                <span>🎵 B Major | 86 BPM</span>
+                <span>🏷️ Country / Story-Song</span>
+                <span>⏱️ Full audio available</span>
+            </div>
+            <p>A classic country storytelling track in the tradition of the greats. Laid-back tempo, rich imagery, and a chorus that feels like it's been a hit for years.</p>
+        </div>
+
+        <div class="song-card">
+            <h3>"Daddy's at the Bar"</h3>
+            <div class="meta">
+                <span>🏷️ Country / Emotional Ballad</span>
+                <span>⏱️ Full track produced</span>
+            </div>
+            <p>An emotional country song about a musician grappling with fatherhood and a bitter breakup. Struggling with loneliness and his co-parent's criticism, he seeks solace in late nights at the bar, torn between his career and family.</p>
+        </div>
+
+        <div class="song-card">
+            <h3>"What Rednecks Do"</h3>
+            <div class="meta">
+                <span>🏷️ Country / Up-Tempo Party Anthem</span>
+                <span>⏱️ Full track produced</span>
+            </div>
+            <p>A lively celebration of redneck culture — unapologetic, fun-loving, and proud. Mix of humor and heart, perfect for the tailgate, the honky-tonk, or any crowd that likes to have a good time.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact">
+    <div class="container">
+        <h2>Pitching & Licensing</h2>
+        <p>For artist cuts, sync licensing, or to request full demos:</p>
+        <p class="email">📧 bennythomasband@gmail.com</p>
+        <p>📞 (661) 533-0100</p>
+        <p style="color: #888; font-size: 0.9rem; margin-top: 20px; font-style: italic;">Represented by Dale Jacobs — Promotion Manager</p>
+
+        <div style="margin-top: 30px;">
+            <h3 style="color: #c9a84c; margin-bottom: 15px;">Follow & Connect</h3>
+            <div class="social-row">
+                <a href="https://www.instagram.com/bennythomasband/" class="social-link" target="_blank">📸 Instagram</a>
+                <a href="https://youtube.com/@bennythomasband695" class="social-link" target="_blank">▶ YouTube</a>
+                <a href="https://www.facebook.com/ASULIKEITENTERTAINMENT" class="social-link" target="_blank">📘 Facebook</a>
+                <a href="https://www.tiktok.com/@bennythomascountryband" class="social-link" target="_blank">🎵 TikTok</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="https://github.com/djbenthomas/as-ulikeit/raw/main/hey_summer.mp3" class="btn">⬇ Download Press Kit</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Benny Thomas. All songs original. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

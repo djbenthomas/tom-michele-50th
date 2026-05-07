@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Booth Rental — AS·U·LIKE·IT Entertainment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --black: #0a0a0a;
+      --dark: #111;
+      --gold: #b8860b;
+      --gold-light: #d4a534;
+      --cream: #f5f0e8;
+      --text: #e0dcd6;
+      --text-muted: #8a857e;
+      --border: #2a2a2a;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #fff; }
+    a { text-decoration: none; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,10,0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .nav-left { display: flex; align-items: center; gap: 0.75rem; }
+    nav .nav-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+    nav .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 0.15em; color: var(--gold); font-weight: 600; }
+    nav .logo span { color: #fff; }
+    nav .links { display: flex; gap: 1.5rem; align-items: center; }
+    nav .links a { color: var(--text-muted); font-size: 0.85rem; transition: color 0.3s; }
+    nav .links a:hover { color: var(--gold); }
+    nav .book-btn { background: var(--gold); color: var(--black); padding: 0.4rem 1.2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .pb-page { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; text-align: center; }
+    .pb-page h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 0.5rem; }
+    .pb-page .sub { color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 2rem; }
+    .pb-page .flyer { max-width: 100%; width: 500px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.5); margin-bottom: 2rem; }
+    .pb-page .info { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; max-width: 550px; margin: 0 auto 2rem; }
+    .btn { padding: 0.85rem 2.2rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s; display: inline-block; }
+    .btn-primary { background: var(--gold); color: var(--black); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--gold); color: var(--gold); }
+    .btn-outline:hover { background: rgba(184,134,11,0.1); }
+    .back-link { color: var(--text-muted); font-size: 0.8rem; margin-top: 2rem; display: block; }
+    .back-link:hover { color: var(--gold); }
+
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-left">
+    <img src="images/ben-thomas-main.jpg" alt="Ben Thomas" class="nav-avatar">
+    <div class="logo">AS·<span>U</span>·LIKE·IT</div>
+  </div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#packages">Packages</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="https://djbenthomas.github.io/Booking/" class="book-btn">Book Now</a>
+  </div>
+</nav>
+
+<div class="pb-page">
+  <h1>Photo Booth <em style="color:var(--gold);">Rentals</em></h1>
+  <div class="sub">Nashville · Hendersonville · Middle TN</div>
+  <img src="images/photobooth.jpg" alt="Photo Booth" class="flyer">
+  <div class="info">
+    <p><strong>$300</strong> for 4 hours — unlimited printing the entire time. Digital copies of every photo sent via Google Drive after your event. Setup, breakdown &amp; tech support included. Free within 20 miles of Hendersonville.</p>
+    <p style="margin-top:1rem;">🎧 Add a DJ for <strong>$100/hr</strong> — book both for the full experience!</p>
+  </div>
+  <a href="sms:6615330100" class="btn btn-primary">📱 Text to Book</a>
+  <a href="https://djbenthomas.github.io/Booking/" class="btn btn-outline" style="margin-left:0.5rem;">Online Booking</a>
+  <a href="index.html" class="back-link">← Back to AS·U·LIKE·IT</a>
+</div>
+
+<footer>© 2026 AS·U·LIKE·IT Entertainment — Ben Thomas — Nashville, TN</footer>
+</body>
+</html>
