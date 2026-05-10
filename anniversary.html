@@ -108,12 +108,20 @@
     .details-card .item-value a:hover { text-decoration: underline; }
 
     .gallery {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-      margin-top: 2rem;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 1rem; margin-top: 2rem; max-width: 900px;
+      margin-left: auto; margin-right: auto;
     }
     .gallery img {
-      width: 100%; border-radius: 6px; border: 1px solid var(--border);
+      border-radius: 6px; border: 1px solid var(--border);
+      object-fit: cover; transition: opacity 0.3s; cursor: pointer;
     }
+    .gallery img:hover { opacity: 0.85; }
+    .gallery .tall { width: 220px; height: 320px; }
+    .gallery .wide { width: 320px; height: 220px; }
+    .gallery .medium { width: 260px; height: 260px; }
+    .gallery .large { width: 300px; height: 300px; }
+    .gallery .portrait { width: 240px; height: 340px; }
 
     footer {
       border-top: 1px solid var(--border);
@@ -159,14 +167,14 @@
       max-width: 90vw; max-height: 90vh; border-radius: 8px;
       border: 2px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     }
-    .gallery img { cursor: pointer; transition: opacity 0.3s; }
-    .gallery img:hover { opacity: 0.85; }
+
 
     .inline-link { color: var(--gold); text-decoration: underline; }
     .inline-link:hover { color: var(--gold-light); }
 
-    @media (max-width: 600px) {
-      .gallery { grid-template-columns: 1fr; }
+    @media (max-width: 650px) {
+      .gallery { flex-direction: column; align-items: center; }
+      .gallery img { width: 100% !important; height: auto !important; max-width: 400px; }
     }
   </style>
 </head>
@@ -255,8 +263,14 @@
 <section class="section">
   <h2>A lifetime of <em>memories</em></h2>
   <p>Five decades of marriage. A family built on love, faith, and countless unforgettable moments.</p>
-  <div class="gallery" style="grid-template-columns: 1fr;">
-    <img src="images/tom-michele-couch.jpg" alt="Tom & Michele">
+  <div class="gallery">
+    <img src="images/tom-michele-couch.jpg" alt="Tom & Michele on the couch" class="portrait">
+    <img src="images/photo-1.jpg" alt="Tom & Michele" class="tall">
+    <img src="images/photo-2.jpg" alt="Tom & Michele" class="wide">
+    <img src="images/photo-3.jpg" alt="Tom & Michele" class="portrait">
+    <img src="images/photo-4.jpg" alt="Tom & Michele" class="tall">
+    <img src="images/photo-5.jpg" alt="Tom & Michele" class="wide">
+    <img src="images/photo-6.jpg" alt="Tom & Michele" class="medium">
   </div>
 </section>
 
