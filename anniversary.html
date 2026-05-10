@@ -129,32 +129,7 @@
       font-size: 0.75rem; color: var(--text-muted);
     }
 
-    /* ========== RSVP Section ========== */
-    .rsvp-section {
-      padding: 5rem 2rem;
-      background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
-    }
-    .rsvp-container {
-      max-width: 600px; margin: 0 auto; text-align: center;
-    }
-    .rsvp-container h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 0.5rem;
-    }
-    .rsvp-container h2 em { color: var(--gold); font-style: italic; }
-    .rsvp-container > p {
-      color: var(--text-muted); margin-bottom: 2rem;
-    }
 
-    .rsvp-card {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      padding: 1.5rem;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .rsvp-card iframe {
-      border-radius: 6px;
-    }
 
     /* ========== Lightbox ========== */
     .lightbox-overlay {
@@ -215,7 +190,7 @@
   </div>
 
   <div style="margin-top: 2rem;">
-    <a href="#rsvp" class="btn btn-primary">RSVP Now →</a>
+    <a href="#text-mom" class="btn btn-primary">RSVP →</a>
   </div>
 </section>
 
@@ -240,24 +215,7 @@
   </p>
 </section>
 
-<!-- ====== RSVP FORM ====== -->
-<section class="rsvp-section" id="rsvp">
-  <div class="rsvp-container">
-    <h2>Will you be <em>joining us?</em></h2>
-    <p>Let us know by <strong>May 30</strong> so we can get a final headcount for the barbecue.</p>
 
-    <div class="rsvp-card" style="padding: 1.5rem; overflow: hidden;">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeVgByyT-Er5-Ogeh_AS9F1RXSdGZ-PmwVrXagDvWFMClY4KQ/viewform?embedded=true" 
-              width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0"
-              style="background: transparent; border-radius: 6px;">
-        Loading…
-      </iframe>
-    </div>
-    <p style="color:var(--text-muted); font-size:0.8rem; margin-top:1rem;">
-      Responses go straight to a Google Sheet — Michele can see the guest list anytime.
-    </p>
-  </div>
-</section>
 
 <!-- ====== GALLERY ====== -->
 <section class="section">
@@ -274,11 +232,12 @@
   </div>
 </section>
 
-<!-- ====== CANT MAKE IT ====== -->
-<section class="section">
+<!-- ====== CANT MAKE IT / RSVP ====== -->
+<section class="section" id="text-mom">
   <h2>Can't make it?</h2>
-  <p>If you can't join in person, send a message or memory through the <a href="#rsvp" class="inline-link">RSVP form above</a> — every word means the world to them.</p>
-  <p style="color:var(--text-muted); font-size:0.85rem;">Or text Michele directly at <strong>(402) 305-2304</strong></p>
+  <p>If you can't join in person, send a message or memory — every word means the world to them.</p>
+  <p style="color:var(--text-muted); font-size:0.85rem;">Text Michele at <strong>(402) 305-2304</strong> or email her at <strong>Mawieduwilt@gmail.com</strong></p>
+  <p style="margin-top:1.5rem;"><em style="color:var(--gold);">Please RSVP by May 30 so we can get a final headcount for the barbecue!</em></p>
 </section>
 
 <!-- ====== LIGHTBOX ====== -->
