@@ -76,11 +76,20 @@
     }
     .btn-primary { background: var(--gold); color: var(--black); }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold); padding: 0.85rem 2.2rem;
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: all 0.3s; font-family: 'Inter', sans-serif;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--black); }
 
     .section {
       padding: 5rem 2rem; max-width: 700px; margin: 0 auto;
       text-align: center;
     }
+    .section-wide { max-width: 900px; }
     .section h2 {
       font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 0.8rem;
     }
@@ -123,13 +132,141 @@
     .gallery .large { width: 300px; height: 300px; }
     .gallery .portrait { width: 240px; height: 340px; }
 
+    /* ====== PHOTO BOOTH SLIDESHOW ====== */
+    .slideshow-container {
+      position: relative;
+      max-width: 420px;
+      margin: 2rem auto 0;
+    }
+    .slideshow-frame {
+      position: relative;
+      width: 100%;
+      height: auto;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .slideshow-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+      transition: opacity 0.5s ease;
+    }
+    .slideshow-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .slideshow-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slideshow-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+    .slideshow-counter {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+    }
+    .slideshow-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .slideshow-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0;
+    }
+    .slideshow-dot.active { background: var(--gold); transform: scale(1.3); }
+    .slideshow-dot:hover { background: var(--text-muted); }
+
+    .slideshow-autoplay {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+    .slideshow-autoplay label {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .slideshow-autoplay input[type="checkbox"] {
+      accent-color: var(--gold);
+    }
+
+    .photobooth-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .photobooth-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    .photobooth-grid img:hover { opacity: 0.8; }
+
+    .view-toggle {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .view-toggle button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s;
+    }
+    .view-toggle button.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(184,134,11,0.1);
+    }
+    .view-toggle button:hover { border-color: var(--gold); color: var(--gold); }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem; text-align: center;
       font-size: 0.75rem; color: var(--text-muted);
     }
-
-
 
     /* ========== Lightbox ========== */
     .lightbox-overlay {
@@ -143,13 +280,14 @@
       border: 2px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     }
 
-
     .inline-link { color: var(--gold); text-decoration: underline; }
     .inline-link:hover { color: var(--gold-light); }
 
     @media (max-width: 650px) {
       .gallery { flex-direction: column; align-items: center; }
       .gallery img { width: 100% !important; height: auto !important; max-width: 400px; }
+      .photobooth-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+      .photobooth-grid img { height: 150px; }
     }
   </style>
 </head>
@@ -215,8 +353,6 @@
   </p>
 </section>
 
-
-
 <!-- ====== GALLERY ====== -->
 <section class="section">
   <h2>A lifetime of <em>memories</em></h2>
@@ -229,6 +365,52 @@
     <img src="images/photo-4.jpg" alt="Tom & Michele" class="tall">
     <img src="images/photo-5.jpg" alt="Tom & Michele" class="wide">
     <img src="images/photo-6.jpg" alt="Tom & Michele" class="medium">
+  </div>
+</section>
+
+<!-- ====== PHOTO BOOTH ====== -->
+<section class="section section-wide" id="photobooth">
+  <h2>Photo Booth <em>Fun</em></h2>
+  <p>All the silly faces, poses, and smiles from the photo booth. Click through the slideshow or browse the grid below.</p>
+
+  <div class="view-toggle" id="viewToggle">
+    <button class="active" data-view="slideshow">🎞️ Slideshow</button>
+    <button data-view="grid">📷 Grid</button>
+  </div>
+
+  <!-- Slideshow View -->
+  <div id="slideshowView">
+    <div class="slideshow-container">
+      <div class="slideshow-frame">
+        <img id="slideshowImg" src="images/photobooth/20010101022459.jpg" alt="Photo booth strip">
+      </div>
+      <div class="slideshow-controls">
+        <button class="slideshow-btn" id="prevBtn">◀</button>
+        <span class="slideshow-counter" id="slideCounter">1 / 32</span>
+        <button class="slideshow-btn" id="nextBtn">▶</button>
+      </div>
+      <div class="slideshow-indicators" id="slideDots"></div>
+      <div class="slideshow-autoplay">
+        <label>
+          <input type="checkbox" id="autoPlayToggle" checked>
+          Auto-play slideshow
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid View (hidden by default) -->
+  <div id="gridView" style="display: none;">
+    <div class="photobooth-grid" id="photoGrid"></div>
+  </div>
+</section>
+
+<!-- ====== UPLOAD PORTAL CTA ====== -->
+<section class="section">
+  <h2>Share <em>your</em> photos</h2>
+  <p>Got photos from the party? Upload them here so everyone can see! Every snapshot helps tell the story of this amazing celebration.</p>
+  <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+    <a href="upload.html" class="btn btn-primary">📸 Upload Your Photos →</a>
   </div>
 </section>
 
@@ -250,7 +432,144 @@
 </footer>
 
 <script>
-  // ========== Lightbox ==========
+  // ========== Photo Booth Photos ==========
+  // Auto-generated list of all 32 photobooth images
+  const photoboothPhotos = [
+    "20010101022459.jpg","20010101031232.jpg","20010101032156.jpg","20010101032249.jpg",
+    "20010101032624.jpg","20010101032718.jpg","20010101032906.jpg","20010101032959.jpg",
+    "20010101043828.jpg","20010101044026.jpg","20010101044212.jpg","20010101050955.jpg",
+    "20010101051046.jpg","20010101051205.jpg","20010101051253.jpg","20010101051533.jpg",
+    "20010101051723.jpg","20010101051938.jpg","20010101053534.jpg","20010101054816.jpg",
+    "20010101054916.jpg","20010101055045.jpg","20010101061633.jpg","20010101061728.jpg",
+    "20010101061837.jpg","20010101061934.jpg","20010101062024.jpg","20010101063901.jpg",
+    "20010101065109.jpg","20010101070347.jpg","20010101071223.jpg","20010101075336.jpg"
+  ];
+  const BASE = "images/photobooth/";
+
+  // ========== Slideshow State ==========
+  let currentSlide = 0;
+  let autoPlayInterval = null;
+  let isAutoPlaying = true;
+
+  const slideshowImg = document.getElementById("slideshowImg");
+  const slideCounter = document.getElementById("slideCounter");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const dotsContainer = document.getElementById("slideDots");
+  const autoPlayToggle = document.getElementById("autoPlayToggle");
+
+  function showSlide(index) {
+    currentSlide = ((index % photoboothPhotos.length) + photoboothPhotos.length) % photoboothPhotos.length;
+    slideshowImg.style.opacity = "0";
+    setTimeout(() => {
+      slideshowImg.src = BASE + photoboothPhotos[currentSlide];
+      slideshowImg.style.opacity = "1";
+    }, 200);
+    slideCounter.textContent = `${currentSlide + 1} / ${photoboothPhotos.length}`;
+    document.querySelectorAll(".slideshow-dot").forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentSlide);
+    });
+  }
+
+  function nextSlide() { showSlide(currentSlide + 1); }
+  function prevSlide() { showSlide(currentSlide - 1); }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    if (isAutoPlaying) {
+      autoPlayInterval = setInterval(nextSlide, 3000);
+    }
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = null;
+    }
+  }
+
+  // Build dots
+  photoboothPhotos.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "slideshow-dot" + (i === 0 ? " active" : "");
+    dot.addEventListener("click", () => {
+      showSlide(i);
+      if (isAutoPlaying) {
+        stopAutoPlay();
+        startAutoPlay();
+      }
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    if (isAutoPlaying) { stopAutoPlay(); startAutoPlay(); }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    if (isAutoPlaying) { stopAutoPlay(); startAutoPlay(); }
+  });
+
+  autoPlayToggle.addEventListener("change", () => {
+    isAutoPlaying = autoPlayToggle.checked;
+    if (isAutoPlaying) {
+      startAutoPlay();
+    } else {
+      stopAutoPlay();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (document.getElementById("slideshowView").style.display !== "none") {
+      if (e.key === "ArrowRight") { nextSlide(); if (isAutoPlaying) { stopAutoPlay(); startAutoPlay(); } }
+      if (e.key === "ArrowLeft") { prevSlide(); if (isAutoPlaying) { stopAutoPlay(); startAutoPlay(); } }
+    }
+  });
+
+  // ========== Grid View ==========
+  const photoGrid = document.getElementById("photoGrid");
+  photoboothPhotos.forEach((filename) => {
+    const img = document.createElement("img");
+    img.src = BASE + filename;
+    img.alt = "Photo booth";
+    img.loading = "lazy";
+    img.addEventListener("click", function() {
+      document.getElementById("lightbox-img").src = this.src;
+      document.getElementById("lightbox").classList.add("active");
+    });
+    photoGrid.appendChild(img);
+  });
+
+  // ========== View Toggle ==========
+  const slideshowView = document.getElementById("slideshowView");
+  const gridView = document.getElementById("gridView");
+  const toggleBtns = document.querySelectorAll(".view-toggle button");
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      toggleBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const view = btn.dataset.view;
+      if (view === "slideshow") {
+        slideshowView.style.display = "block";
+        gridView.style.display = "none";
+        slideshowImg.style.maxHeight = "";
+        if (isAutoPlaying) startAutoPlay();
+      } else {
+        slideshowView.style.display = "none";
+        gridView.style.display = "block";
+        stopAutoPlay();
+      }
+    });
+  });
+
+  // ========== Start autoplay ==========
+  startAutoPlay();
+
+  // ========== Legacy Lightbox ==========
   document.querySelectorAll('.gallery img').forEach(img => {
     img.addEventListener('click', function() {
       document.getElementById('lightbox-img').src = this.src;

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Your Photos — Tom & Michele's 50th</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a; --dark: #111; --gold: #b8860b;
+      --gold-light: #d4a534; --text: #e0dcd6;
+      --text-muted: #8a857e; --border: #2a2a2a;
+    }
+    body {
+      font-family: 'Inter', sans-serif; background: var(--black);
+      color: var(--text); -webkit-font-smoothing: antialiased;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #fff; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page-header { text-align: center; padding: 3rem 2rem 1rem; max-width: 600px; }
+    .page-header h1 { font-size: clamp(2rem, 4vw, 3rem); }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .page-header p { color: var(--text-muted); margin-top: 0.5rem; font-size: 0.95rem; }
+    .card {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 2.5rem 2rem; max-width: 500px; margin: 2rem auto;
+      text-align: center; width: 90%;
+    }
+    .card .icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+    .card .contact { color: var(--gold); font-weight: 600; font-size: 1.1rem; }
+    .card .btn {
+      display: inline-block; padding: 0.85rem 2.2rem; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.3s;
+      border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+      background: var(--gold); color: var(--black); margin-top: 0.5rem;
+    }
+    .card .btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .back-link { text-align: center; padding: 2rem; font-size: 0.85rem; }
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.75rem; color: var(--text-muted); width: 100%; }
+  </style>
+</head>
+<body>
+<div class="page-header">
+  <h1>Share <em>Your Photos</em></h1>
+  <p>Help us build the full photo album from Tom & Michele's 50th Anniversary celebration</p>
+</div>
+
+<div class="card">
+  <div class="icon">📤</div>
+  <h3>Send us your photos</h3>
+  <p>Text your photos directly to Michele and we'll add them to the gallery:</p>
+  <p class="contact">📱 (402) 305-2304</p>
+  <p style="margin-top: 0.5rem;">or email them to:</p>
+  <p class="contact">✉️ Mawieduwilt@gmail.com</p>
+  <p style="margin-top:1rem; font-size:0.85rem;">Every photo helps tell the story of this amazing celebration!</p>
+</div>
+
+<div class="card" style="margin-top:0;">
+  <div class="icon">📸</div>
+  <h3>Want to see the gallery?</h3>
+  <p>Check out all the photo booth snaps and memories on the anniversary page.</p>
+  <a href="anniversary.html#photobooth" class="btn">View Photo Gallery →</a>
+</div>
+
+<div class="back-link"><a href="anniversary.html">← Back to Anniversary Page</a></div>
+<footer>© 2026 — Tom &amp; Michele's 50th Anniversary · Omaha, NE</footer>
+</body>
+</html>
